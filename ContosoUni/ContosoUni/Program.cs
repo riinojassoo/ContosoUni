@@ -1,3 +1,6 @@
+using ContosoUni.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ContosoUni
 {
 	public class Program
@@ -5,6 +8,11 @@ namespace ContosoUni
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+
+			builder.Services.AddDbContext<SchoolContext>(options =>
+				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
