@@ -32,7 +32,7 @@ namespace ContosoUni.Controllers
 
 			var student = await _context.Students
 				.Include(s => s.Enrollments)
-				 .ThenInclude(e => e.Course)
+					.ThenInclude(e => e.Course)
 				.AsNoTracking()
 				.FirstOrDefaultAsync(m => m.ID == id);
 

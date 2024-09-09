@@ -8,14 +8,12 @@ namespace ContosoUni.Data
         {
             context.Database.EnsureCreated();
 
-            // Look for any students.
             if (context.Students.Any())
             {
-                return;   // DB has been seeded
+                return;
             }
-
             var students = new Student[]
-            {
+           {
             new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2005-09-01")},
             new Student{FirstMidName="Meredith",LastName="Alonso",EnrollmentDate=DateTime.Parse("2002-09-01")},
             new Student{FirstMidName="Arturo",LastName="Anand",EnrollmentDate=DateTime.Parse("2003-09-01")},
@@ -24,7 +22,8 @@ namespace ContosoUni.Data
             new Student{FirstMidName="Peggy",LastName="Justice",EnrollmentDate=DateTime.Parse("2001-09-01")},
             new Student{FirstMidName="Laura",LastName="Norman",EnrollmentDate=DateTime.Parse("2003-09-01")},
             new Student{FirstMidName="Nino",LastName="Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01")}
-            };
+
+           };
             foreach (Student s in students)
             {
                 context.Students.Add(s);
@@ -48,7 +47,7 @@ namespace ContosoUni.Data
             context.SaveChanges();
 
             var enrollments = new Enrollment[]
-            {
+           {
             new Enrollment{StudentID=1,CourseID=1050,Grade=Grade.A},
             new Enrollment{StudentID=1,CourseID=4022,Grade=Grade.C},
             new Enrollment{StudentID=1,CourseID=4041,Grade=Grade.B},
@@ -61,7 +60,7 @@ namespace ContosoUni.Data
             new Enrollment{StudentID=5,CourseID=4041,Grade=Grade.C},
             new Enrollment{StudentID=6,CourseID=1045},
             new Enrollment{StudentID=7,CourseID=3141,Grade=Grade.A},
-            };
+           };
             foreach (Enrollment e in enrollments)
             {
                 context.Enrollments.Add(e);
